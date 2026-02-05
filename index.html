@@ -1,133 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>My Portfolio</title>
-
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adaptive Landing Page</title>
+    <link rel="stylesheet" href="tailwind.css">
 </head>
+<body class="bg-white text-gray-800">
 
-<body class="bg-gray-100 text-gray-800">
+    <!-- Header -->
+    <header class="bg-red-300 text-white text-center py-6">
+        <h1 class="text-2xl font-bold">Welcome to Our Service</h1>
+        <p id="deviceType" class="text-sm mt-1"></p>
+    </header>
 
-  <!-- Navbar -->
-  <nav class="bg-white shadow-md fixed w-full z-10">
-    <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
-      <h1 class="text-xl font-bold">My Portfolio</h1>
-      <div class="space-x-4 hidden md:block">
-        <a href="#profile" class="hover:text-blue-600">Profile</a>
-        <a href="#skills" class="hover:text-blue-600">Skills</a>
-        <a href="#experience" class="hover:text-blue-600">Experience</a>
-        <a href="#projects" class="hover:text-blue-600">Projects</a>
-        <a href="#contact" class="hover:text-blue-600">Contact</a>
-      </div>
-    </div>
-  </nav>
+    <!-- Main Content -->
+    <main class="max-w-3xl mx-auto p-6">
 
-  <!-- Profile Section -->
-  <section id="profile" class="pt-24 pb-16">
-    <div class="max-w-6xl mx-auto px-4 text-center">
-      <img src="https://via.placeholder.com/150" alt="Profile"
-           class="mx-auto rounded-full mb-6">
-      <h2 class="text-3xl font-bold mb-2">Your Name</h2>
-      <p class="text-gray-600 mb-4">Web Developer | Designer | Problem Solver</p>
-      <p class="max-w-xl mx-auto">
-        I’m a passionate web developer with experience building responsive and user-friendly websites.
-      </p>
-    </div>
-  </section>
+        <!-- Hero Section -->
+        <section class="text-center mb-6">
+            <h2 class="text-xl font-bold mb-1">Discover Our Solutions</h2>
+            <p class="text-sm">
+                We provide top-notch solutions tailored to your needs.
+            </p>
+        </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="bg-white py-16">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-center mb-10">Skills</h2>
+        <!-- Features -->
+        <section class="mb-6">
+            <h3 class="text-lg font-bold mb-3">Features</h3>
+            <div id="featureList" class="grid grid-cols-2 gap-4">
+                <!-- Dynamic features -->
+            </div>
+        </section>
 
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-        <div class="p-4 bg-gray-100 rounded">HTML5</div>
-        <div class="p-4 bg-gray-100 rounded">CSS3</div>
-        <div class="p-4 bg-gray-100 rounded">JavaScript</div>
-        <div class="p-4 bg-gray-100 rounded">Tailwind CSS</div>
-        <div class="p-4 bg-gray-100 rounded">React</div>
-        <div class="p-4 bg-gray-100 rounded">Git</div>
-        <div class="p-4 bg-gray-100 rounded">Responsive Design</div>
-        <div class="p-4 bg-gray-100 rounded">UI/UX</div>
-      </div>
-    </div>
-  </section>
+        <!-- Contact -->
+        <section>
+            <h3 class="text-lg font-bold mb-1">Contact Us</h3>
+            <p class="text-sm mb-3">
+                Get in touch with us for more information.
+            </p>
 
-  <!-- Experience Section -->
-  <section id="experience" class="py-16">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-center mb-10">Experience</h2>
+            <form class="space-y-3">
+                <div>
+                    <label class="text-sm font-semibold">Name:</label>
+                    <input type="text" class="w-full border rounded p-2">
+                </div>
 
-      <div class="space-y-6">
-        <div class="bg-white p-6 rounded shadow">
-          <h3 class="font-semibold text-lg">Front-End Developer</h3>
-          <p class="text-gray-600">Company Name • 2022 – Present</p>
-          <p class="mt-2">
-            Built responsive web applications and collaborated with designers and backend developers.
-          </p>
-        </div>
+                <div>
+                    <label class="text-sm font-semibold">Email:</label>
+                    <input type="email" class="w-full border rounded p-2">
+                </div>
 
-        <div class="bg-white p-6 rounded shadow">
-          <h3 class="font-semibold text-lg">Intern Web Developer</h3>
-          <p class="text-gray-600">Company Name • 2021 – 2022</p>
-          <p class="mt-2">
-            Assisted in building landing pages and improving website performance.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
+                <div>
+                    <label class="text-sm font-semibold">Message:</label>
+                    <textarea rows="4" class="w-full border rounded p-2"></textarea>
+                </div>
 
-  <!-- Projects Section -->
-  <section id="projects" class="bg-white py-16">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-center mb-10">Projects</h2>
+                <button type="submit"
+                    class="w-full bg-red-300 text-white py-2 rounded hover:bg-red-500">
+                    Send Message
+                </button>
+            </form>
+        </section>
 
-      <div class="grid md:grid-cols-3 gap-6">
-        <div class="bg-gray-100 p-6 rounded">
-          <h3 class="font-semibold mb-2">Portfolio Website</h3>
-          <p>A responsive personal portfolio built with HTML, CSS, and Tailwind.</p>
-        </div>
+    </main>
 
-        <div class="bg-gray-100 p-6 rounded">
-          <h3 class="font-semibold mb-2">E-commerce UI</h3>
-          <p>Modern product pages designed with Tailwind CSS.</p>
-        </div>
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white text-center py-3 mt-6">
+        <p class="text-sm">© 2024 Our Service</p>
+    </footer>
 
-        <div class="bg-gray-100 p-6 rounded">
-          <h3 class="font-semibold mb-2">Dashboard App</h3>
-          <p>Interactive dashboard with charts and responsive layout.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section id="contact" class="py-16">
-    <div class="max-w-6xl mx-auto px-4">
-      <h2 class="text-2xl font-bold text-center mb-10">Contact Me</h2>
-
-      <form class="max-w-xl mx-auto bg-white p-6 rounded shadow space-y-4">
-        <input type="text" placeholder="Your Name"
-               class="w-full border p-2 rounded">
-        <input type="email" placeholder="Your Email"
-               class="w-full border p-2 rounded">
-        <textarea placeholder="Your Message"
-                  class="w-full border p-2 rounded"></textarea>
-        <button class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700">
-          Send Message
-        </button>
-      </form>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white text-center py-4">
-    © 2026 Your Name. All rights reserved.
-  </footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
