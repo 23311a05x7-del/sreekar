@@ -1,70 +1,52 @@
-// -------------------------------------------
-// Import EventEmitter from Node.js
-// -------------------------------------------
-const EventEmitter = require('events');
+// Import required modules
+const express = require('express');
+const dotenv = require('dotenv');
 
-// Create an instance of EventEmitter
-const customEmitter = new EventEmitter();
+// Load environment variables
+dotenv.config();
+
+// Create express app
+const app = express();
+
+// Load PORT from .env or default to 3000
+const port = process.env.PORT || 3000;
 
 
-// -------------------------------------------
-// Asynchronous Function to Simulate Delay
-// -------------------------------------------
-async function simulateAsyncProcess(message) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            console.log(message);
-            resolve();
-        }, 2000); // 2 seconds delay
+// --------------------------------------
+// Home Route
+// --------------------------------------
+app.get('/', (req, res) => {
+    res.send('Environment Variables Demo!');
+});
+
+
+// --------------------------------------
+// Config Route (Demo Only)
+// --------------------------------------
+app.get('/config', (req, res) => {
+    const dbHost = process.env.DB_HOST;
+    const dbUser = process.env.DB_USER;
+    const apiKey = process.env.API_KEY;
+
+    res.json({
+        dbHost,
+        dbUser,
+        apiKey
     });
-}
-
-
-// -------------------------------------------
-// Event Listener: userLogin
-// -------------------------------------------
-customEmitter.on('userLogin', async (username) => {
-    console.log(`User "${username}" is logging in...`);
-
-    // Simulate async operation
-    await simulateAsyncProcess('Checking user credentials...');
-
-    console.log(`User "${username}" successfully logged in!`);
 });
 
 
-// -------------------------------------------
-// Event Listener: sensorReading
-// -------------------------------------------
-customEmitter.on('sensorReading', async (sensorType, value) => {
-    console.log(`Received a reading from ${sensorType}: ${value}`);
-
-    // Simulate async processing
-    await simulateAsyncProcess(`Processing ${sensorType} data...`);
-
-    if (sensorType === 'temperature' && value > 30) {
-        console.log('Warning: Temperature is too high!');
-    } else {
-        console.log('Sensor data processed successfully.');
-    }
+// --------------------------------------
+// 404 Error Handler
+// --------------------------------------
+app.use((req, res) => {
+    res.status(404).send('Not Found');
 });
 
 
-// -------------------------------------------
-// Simulated Events
-// -------------------------------------------
-
-// Simulate user login after 1 second
-setTimeout(() => {
-    customEmitter.emit('userLogin', 'john_doe');
-}, 1000);
-
-// Simulate temperature sensor reading after 3 seconds
-setTimeout(() => {
-    customEmitter.emit('sensorReading', 'temperature', 35);
-}, 3000);
-
-// Simulate humidity sensor reading after 5 seconds
-setTimeout(() => {
-    customEmitter.emit('sensorReading', 'humidity', 50);
-}, 5000);
+// --------------------------------------
+// Start Server
+// --------------------------------------
+app.listen(port, () => {
+    console.log(`Server running on port ${port}`);
+});
