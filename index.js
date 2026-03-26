@@ -1,52 +1,19 @@
-// Import required modules
 const express = require('express');
-const dotenv = require('dotenv');
+// import module to parse JSON data
+const bodyParser = require('body-parser');
 
-// Load environment variables
-dotenv.config();
-
-// Create express app
 const app = express();
 
-// Load PORT from .env or default to 3000
-const port = process.env.PORT || 3000;
+// Middleware to parse JSON
+app.use(bodyParser.json());
 
+// Import router
+const router = require('./route/bookRoute');
 
-// --------------------------------------
-// Home Route
-// --------------------------------------
-app.get('/', (req, res) => {
-    res.send('Environment Variables Demo!');
-});
+// Use router
+app.use('/books', router);
 
-
-// --------------------------------------
-// Config Route (Demo Only)
-// --------------------------------------
-app.get('/config', (req, res) => {
-    const dbHost = process.env.DB_HOST;
-    const dbUser = process.env.DB_USER;
-    const apiKey = process.env.API_KEY;
-
-    res.json({
-        dbHost,
-        dbUser,
-        apiKey
-    });
-});
-
-
-// --------------------------------------
-// 404 Error Handler
-// --------------------------------------
-app.use((req, res) => {
-    res.status(404).send('Not Found');
-});
-
-
-// --------------------------------------
-// Start Server
-// --------------------------------------
-app.listen(port, () => {
-    console.log(`Server running on port ${port}`);
+// Start server
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });
